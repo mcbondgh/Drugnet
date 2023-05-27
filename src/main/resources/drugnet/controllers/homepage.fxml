@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import io.github.palexdev.materialfx.controls.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="1270.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="drugnet.controllers.HomePage">
+   <children>
+      <BorderPane fx:id="borderPane" layoutX="-1.0" prefHeight="640.0" prefWidth="1270.0" style="-fx-background-color: #fff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="0.0">
+         <padding>
+            <Insets bottom="1.0" left="45.0" right="1.0" top="50.0" />
+         </padding></BorderPane>
+      <VBox fx:id="sideBarSlider" alignment="TOP_RIGHT" layoutX="-4.0" layoutY="48.0" prefHeight="640.0" prefWidth="180.0" style="-fx-background-color: #fff;">
+         <children>
+            <MFXButton fx:id="dashboardButton" cancelButton="true" computeRadiusMultiplier="false" onAction="#dashboardButtonClicked" prefHeight="50.0" prefWidth="180.0" rippleAnimateShadow="true" rippleAnimationSpeed="2.0" rippleBackgroundOpacity="1.0" rippleColor="#dddddd" style="-fx-border-color: #ddd;" text="Dashboard" textFill="#555555">
+               <font>
+                  <Font name="Roboto Bold" size="12.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </MFXButton>
+            <MFXButton fx:id="reportsButton" onAction="#reportsButtonClicked" prefHeight="50.0" prefWidth="193.0" rippleAnimateShadow="true" rippleAnimationSpeed="2.0" rippleBackgroundOpacity="1.0" rippleColor="#dddddd" style="-fx-border-color: #ddd;" text="Reports" textFill="#555555">
+               <font>
+                  <Font name="Roboto Bold" size="12.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </MFXButton>
+            <MFXButton fx:id="salesButton" layoutX="17.0" layoutY="60.0" onAction="#salesButtonClicked" prefHeight="50.0" prefWidth="193.0" rippleAnimateShadow="true" rippleAnimationSpeed="2.0" rippleBackgroundOpacity="1.0" rippleColor="#dddddd" style="-fx-border-color: #ddd;" text="Sales" textFill="#555555">
+               <font>
+                  <Font name="Roboto Bold" size="12.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </MFXButton>
+            <MFXButton fx:id="runTestButton" layoutX="17.0" layoutY="110.0" onAction="#testButtonClicked" prefHeight="50.0" prefWidth="193.0" rippleAnimateShadow="true" rippleAnimationSpeed="2.0" rippleBackgroundOpacity="1.0" rippleColor="#dddddd" style="-fx-border-color: #ddd;" text="Run Test" textFill="#555555">
+               <font>
+                  <Font name="Roboto Bold" size="12.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </MFXButton>
+            <MFXButton fx:id="accountsButton" onAction="#accountsButtonClicked" prefHeight="50.0" prefWidth="193.0" rippleAnimateShadow="true" rippleAnimationSpeed="2.0" rippleBackgroundOpacity="1.0" rippleColor="#dddddd" style="-fx-border-color: #ddd;" text="Accounts" textFill="#555555">
+               <font>
+                  <Font name="Roboto Bold" size="12.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </MFXButton>
+            <MFXButton fx:id="messageBoxButton" layoutX="17.0" layoutY="160.0" onAction="#messageBoxButtonClicked" prefHeight="50.0" prefWidth="193.0" rippleAnimateShadow="true" rippleAnimationSpeed="2.0" rippleBackgroundOpacity="1.0" rippleColor="#dddddd" style="-fx-border-color: #ddd;" text="Message Box" textFill="#555555">
+               <font>
+                  <Font name="Roboto Bold" size="12.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </MFXButton>
+            <MFXButton fx:id="addMedicineButton" layoutX="17.0" layoutY="60.0" onAction="#addMedicineButtonClicked" prefHeight="50.0" prefWidth="193.0" rippleAnimateShadow="true" rippleAnimationSpeed="2.0" rippleBackgroundOpacity="1.0" rippleColor="#dddddd" style="-fx-border-color: #ddd;" text="Add Medicine" textFill="#555555">
+               <font>
+                  <Font name="Roboto Bold" size="12.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </MFXButton>
+            <MFXButton fx:id="stockAdjustmentButton" layoutX="17.0" layoutY="110.0" onAction="#stockAdjustmentButtonClicked" prefHeight="50.0" prefWidth="193.0" rippleAnimateShadow="true" rippleAnimationSpeed="2.0" rippleBackgroundOpacity="1.0" rippleColor="#dddddd" style="-fx-border-color: #ddd;" text="Update Stock" textFill="#555555">
+               <font>
+                  <Font name="Roboto Bold" size="12.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+               <padding>
+                  <Insets left="-10.0" />
+               </padding>
+            </MFXButton>
+            <MFXButton fx:id="humanResourceButton" layoutX="17.0" layoutY="110.0" onAction="#humanResourceButtonClicked" prefHeight="50.0" prefWidth="193.0" rippleAnimateShadow="true" rippleAnimationSpeed="2.0" rippleBackgroundOpacity="1.0" rippleColor="#dddddd" style="-fx-border-color: #ddd;" text="Employees/Users" textFill="#555555">
+               <font>
+                  <Font name="Roboto Bold" size="12.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </MFXButton>
+            <MFXButton fx:id="systemConfigurationButton" layoutX="17.0" layoutY="302.0" onAction="#configurattionButtonClicked" prefHeight="50.0" prefWidth="193.0" rippleAnimateShadow="true" rippleAnimationSpeed="2.0" rippleBackgroundOpacity="1.0" rippleColor="#dddddd" style="-fx-border-color: #ddd;" text="Configurations" textFill="#555555">
+               <font>
+                  <Font name="Roboto Bold" size="12.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </MFXButton>
+         </children>
+         <effect>
+            <DropShadow height="0.0" radius="4.75" spread="0.52">
+               <color>
+                  <Color red="0.4000000059604645" green="0.4000000059604645" blue="0.4000000059604645" opacity="0.2182740569114685" />
+               </color>
+            </DropShadow>
+         </effect>
+      </VBox>
+      <HBox layoutX="-2.0" prefHeight="50.0" prefWidth="1279.0" style="-fx-background-color: #e1f1ff;">
+         <children>
+            <Button fx:id="handburger" mnemonicParsing="false" onAction="#handBurgerClicked" opacity="0.82" prefHeight="25.0" prefWidth="55.0" style="-fx-background-color: #37a0e6ed;" text="🎹" textFill="#ffffffed">
+               <HBox.margin>
+                  <Insets left="50.0" top="10.0" />
+               </HBox.margin>
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <ImageView fx:id="logoDisplay" fitHeight="39.0" fitWidth="48.0" opacity="0.54" pickOnBounds="true" preserveRatio="true" style="-fx-background-color: orange;">
+               <effect>
+                  <DropShadow>
+                     <color>
+                        <Color red="1.0" green="1.0" blue="1.0" />
+                     </color>
+                  </DropShadow>
+               </effect>
+               <viewport>
+                  <Rectangle2D />
+               </viewport>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <HBox.margin>
+                  <Insets left="60.0" top="4.0" />
+               </HBox.margin>
+            </ImageView>
+            <Label fx:id="logoNameLabel" prefHeight="49.0" prefWidth="558.0" text="DrugNet" textAlignment="CENTER" textFill="#030150" wrapText="true">
+               <font>
+                  <Font name="Roboto Black" size="24.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="5.0" />
+               </HBox.margin>
+            </Label>
+            <ImageView fx:id="notificationIcon" fitHeight="26.0" fitWidth="31.0" opacity="0.54" pickOnBounds="true" preserveRatio="true" style="-fx-background-color: orange;">
+               <effect>
+                  <DropShadow>
+                     <color>
+                        <Color red="1.0" green="1.0" blue="1.0" />
+                     </color>
+                  </DropShadow>
+               </effect>
+               <image>
+                  <Image url="@../cliparts/notice_icon.png" />
+               </image>
+               <viewport>
+                  <Rectangle2D />
+               </viewport>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <HBox.margin>
+                  <Insets left="100.0" top="10.0" />
+               </HBox.margin>
+            </ImageView>
+            <Label fx:id="notificationLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="24.0" prefWidth="41.0" style="-fx-background-color: #ff9999; -fx-background-radius: 70;" text="0" textFill="RED">
+               <HBox.margin>
+                  <Insets left="-1.0" top="5.0" />
+               </HBox.margin>
+               <font>
+                  <Font size="11.0" />
+               </font>
+            </Label>
+            <ImageView fx:id="UserImage" fitHeight="20.0" fitWidth="23.0" opacity="0.54" pickOnBounds="true" preserveRatio="true" style="-fx-background-color: orange;">
+               <effect>
+                  <DropShadow>
+                     <color>
+                        <Color red="1.0" green="1.0" blue="1.0" />
+                     </color>
+                  </DropShadow>
+               </effect>
+               <image>
+                  <Image url="@../cliparts/user_icon.png" />
+               </image>
+               <viewport>
+                  <Rectangle2D />
+               </viewport>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <HBox.margin>
+                  <Insets left="80.0" top="13.0" />
+               </HBox.margin>
+            </ImageView>
+            <Label fx:id="activeUserLabel" prefHeight="27.0" prefWidth="211.0" style="-fx-background-color: #fff; -fx-background-radius: 5;" text="Admin" textFill="#030150">
+               <font>
+                  <Font name="Roboto Bold" size="12.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="5.0" right="5.0" top="7.0" />
+               </HBox.margin>
+               <padding>
+                  <Insets bottom="10.0" left="6.0" right="10.0" top="10.0" />
+               </padding>
+            </Label>
+            <Pane fx:id="signoutPane" onMouseClicked="#signoutPaneClicked" prefHeight="50.0" prefWidth="108.0" style="-fx-background-color: #eee;">
+               <children>
+                  <ImageView fitHeight="26.0" fitWidth="31.0" layoutY="13.0" opacity="0.54" pickOnBounds="true" preserveRatio="true" style="-fx-background-color: orange;">
+                     <effect>
+                        <DropShadow>
+                           <color>
+                              <Color red="1.0" green="1.0" blue="1.0" />
+                           </color>
+                        </DropShadow>
+                     </effect>
+                     <image>
+                        <Image url="@../cliparts/signout.png" />
+                     </image>
+                     <viewport>
+                        <Rectangle2D />
+                     </viewport>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ImageView>
+                  <Label fx:id="signoutButton" layoutX="30.0" layoutY="17.0" prefHeight="15.0" prefWidth="52.0" text="Sign Out" textFill="#030150">
+                     <font>
+                        <Font name="Roboto Bold" size="12.0" />
+                     </font>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets top="10.0" />
+               </padding>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Pane>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>
