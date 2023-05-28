@@ -13,14 +13,14 @@
    <children>
       <Pane layoutY="-2.0" prefHeight="53.0" prefWidth="1251.0" style="-fx-background-color: #0c1345c4;">
          <children>
-            <Label layoutX="93.0" layoutY="5.0" text="HUMAN RESOUECE MANAGEMENT" textFill="WHITE">
+            <Label layoutX="93.0" layoutY="5.0" text="HUMAN RESOURCE MANAGEMENT" textFill="WHITE">
                <font>
                   <Font name="Dubai Bold" size="24.0" />
                </font>
             </Label>
          </children>
       </Pane>
-      <Pane layoutX="5.0" layoutY="63.0" prefHeight="404.0" prefWidth="169.0" style="-fx-background-color: #FFF; -fx-background-radius: 5;">
+      <Pane layoutX="5.0" layoutY="63.0" prefHeight="404.0" prefWidth="145.0" style="-fx-background-color: #FFF; -fx-background-radius: 5;">
          <effect>
             <DropShadow>
                <color>
@@ -29,9 +29,9 @@
             </DropShadow>
          </effect>
          <children>
-            <VBox layoutX="6.0" layoutY="67.0" prefHeight="337.0" prefWidth="158.0" spacing="5.0">
+            <VBox layoutX="8.0" layoutY="67.0" prefHeight="280.0" prefWidth="128.0" spacing="5.0">
                <children>
-                  <MFXButton fx:id="employeesViewButton" cancelButton="true" computeRadiusMultiplier="false" onAction="#employeesViewButtonClicked" prefHeight="50.0" prefWidth="155.0" rippleAnimateShadow="true" rippleBackgroundOpacity="1.0" rippleColor="#dddddd" style="-fx-border-color: #ddd; -fx-border-radius: 5;" text="Employee Management" textFill="#6e6e6efa">
+                  <MFXButton fx:id="employeesViewButton" cancelButton="true" computeRadiusMultiplier="false" onAction="#employeesViewButtonClicked" prefHeight="50.0" prefWidth="155.0" rippleAnimateShadow="true" rippleBackgroundOpacity="1.0" rippleColor="#dddddd" style="-fx-border-color: #ddd; -fx-border-radius: 5;" text="Employee Management" textAlignment="CENTER" textFill="#6e6e6efa" wrapText="true">
                      <font>
                         <Font name="Roboto" size="12.0" />
                      </font>
@@ -39,7 +39,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </MFXButton>
-                  <MFXButton fx:id="userViewButton" cancelButton="true" computeRadiusMultiplier="false" prefHeight="50.0" prefWidth="155.0" rippleAnimateShadow="true" rippleBackgroundOpacity="1.0" rippleColor="#dddddd" style="-fx-border-color: #ddd; -fx-border-radius: 5;" text="Users" textFill="#6e6e6efa">
+                  <MFXButton fx:id="userViewButton" cancelButton="true" computeRadiusMultiplier="false" onAction="#userViewButtonClicked" prefHeight="50.0" prefWidth="155.0" rippleAnimateShadow="true" rippleBackgroundOpacity="1.0" rippleColor="#dddddd" style="-fx-border-color: #ddd; -fx-border-radius: 5;" text="Users" textFill="#6e6e6efa">
                      <font>
                         <Font name="Roboto" size="12.0" />
                      </font>
@@ -50,7 +50,7 @@
                         <Insets />
                      </VBox.margin>
                   </MFXButton>
-                  <MFXButton fx:id="userRolesViewButton" cancelButton="true" computeRadiusMultiplier="false" prefHeight="50.0" prefWidth="155.0" rippleAnimateShadow="true" rippleBackgroundOpacity="1.0" rippleColor="#dddddd" style="-fx-border-color: #ddd; -fx-border-radius: 5;" text="User Roles &amp; Permisson" textFill="#6e6e6efa">
+                  <MFXButton fx:id="userRolesViewButton" cancelButton="true" computeRadiusMultiplier="false" prefHeight="50.0" prefWidth="155.0" rippleAnimateShadow="true" rippleBackgroundOpacity="1.0" rippleColor="#dddddd" style="-fx-border-color: #ddd; -fx-border-radius: 5;" text="User Roles &amp; Permisson" textAlignment="CENTER" textFill="#6e6e6efa" wrapText="true">
                      <font>
                         <Font name="Roboto" size="12.0" />
                      </font>
@@ -76,7 +76,7 @@
                   </MFXButton>
                </children>
             </VBox>
-            <Pane prefHeight="53.0" prefWidth="169.0" style="-fx-background-color: #0c1345c4; -fx-background-radius: 5 5 0 0;">
+            <Pane prefHeight="53.0" prefWidth="145.0" style="-fx-background-color: #0c1345c4; -fx-background-radius: 5 5 0 0;">
                <children>
                   <Label layoutX="60.0" layoutY="10.0" text="Menu" textFill="WHITE">
                      <font>
@@ -87,6 +87,6 @@
             </Pane>
          </children>
       </Pane>
-      <BorderPane fx:id="borderPane" layoutX="181.0" layoutY="52.0" prefHeight="563.0" prefWidth="1069.0" style="-fx-background-color: #fff;" />
+      <BorderPane fx:id="borderPane" layoutX="160.0" layoutY="52.0" prefHeight="564.0" prefWidth="1086.0" style="-fx-background-color: #fff;" />
    </children>
 </AnchorPane>

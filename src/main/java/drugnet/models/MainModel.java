@@ -1,25 +1,33 @@
 package drugnet.models;
 
 import drugnet.dbconfig.DbAPI;
+import drugnet.fetchedData.EmployeesData;
 import drugnet.fetchedData.SmsApiData;
 import drugnet.tableViewData.BrandsTableData;
 import drugnet.tableViewData.SuppliersTableData;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.control.Label;
 
 import java.sql.SQLException;
 import java.sql.Timestamp;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 public class MainModel extends DbAPI {
-
     protected int getUserIdByUsername(String username) {
-        int userId = 1;
+        int userId = 0;
+        try {
+            String select = "SELECT user_id FROM users WHERE(username = '"+ username +"')";
+            prepare = DB_CONNECT().prepareStatement(select);
+            if (resultSet.next()) {
+                userId = resultSet.getInt(1);
+            }
+        }catch (SQLException ignored){}
 
         return userId;
     }
-
     protected List<Object> getStoreInfo() {
         List<Object> data = new ArrayList<>();
         try {
@@ -45,7 +53,6 @@ public class MainModel extends DbAPI {
 
         return data;
     }
-
     protected ObservableList<SuppliersTableData> getSuppliesData() {
         ObservableList<SuppliersTableData> data = FXCollections.observableArrayList();
         try {
@@ -69,7 +76,6 @@ public class MainModel extends DbAPI {
 
         return data;
     }
-
     protected ObservableList<BrandsTableData> getBrandsData() {
         ObservableList<BrandsTableData> data = FXCollections.observableArrayList();
         try {
@@ -89,7 +95,6 @@ public class MainModel extends DbAPI {
         }catch (SQLException e) {e.printStackTrace();}
         return data;
     }
-
     protected List<Object> getSmsApi() {
         List<Object> data = new ArrayList<>();
         try {
@@ -108,12 +113,63 @@ public class MainModel extends DbAPI {
             prepare.close();
             resultSet.close();
             DB_CONNECT().close();
-        }catch (SQLException ignored) {
-        }
+        }catch (SQLException ignored) {}
+        return data;
+    }
+    public int countEmployees() {
+        int counter = 0;
+        try {
+            prepare = DB_CONNECT().prepareStatement("SELECT COUNT(*) FROM employees;");
+            resultSet = prepare.executeQuery();
+            if (resultSet.next()) {
+                counter = resultSet.getInt(1);
+            }
+        }catch (SQLException ignored) {}
+        return counter;
+    }
 
+    protected ObservableList<EmployeesData> getAllEmployees() {
+        ObservableList<EmployeesData> data = FXCollections.observableArrayList();
+        try {
+            String select = "SELECT `id`, e.`emp_id`, `fullname`, `emp_mobile_number`, `emp_email`, `emp_digital_address`, `emp_gender`, " +
+                    "`emp_qualification`, `emp_idtype`, `emp_idnumber`, `employed_as`, `emp_salary`, " +
+                    "`date_joined`, `emp_notes`, e.`is_active`, username, `date_modified` " +
+                    "FROM employees AS e INNER JOIN users AS u ON e.emp_id = u.emp_id;";
+            prepare = DB_CONNECT().prepareStatement(select);
+            resultSet = prepare.executeQuery();
+            while(resultSet.next()) {
+                int id = resultSet.getInt("id");
+                String emp_id = resultSet.getString("e.emp_id");
+                String fullname = resultSet.getString("fullname");
+                String mobileNumber = resultSet.getString("emp_mobile_number");
+                String email = resultSet.getString("emp_email");
+                String digitalAddress = resultSet.getString("emp_digital_address");
+                String gender = resultSet.getNString("emp_gender");
+                String qualification = resultSet.getString("emp_qualification");
+                String idType = resultSet.getString("emp_idtype");
+                String idNumber = resultSet.getNString("emp_idnumber");
+                String employmentType = resultSet.getString("employed_as");
+                Double salary = resultSet.getDouble("emp_salary");
+                LocalDate joinedDate = resultSet.getDate("date_joined").toLocalDate();
+                String note = resultSet.getString("emp_notes");
+                byte is_active = resultSet.getByte("e.is_active");
+                String username = resultSet.getString("username");
+                Timestamp dateUpdated = resultSet.getTimestamp("date_modified");
+
+                Label status = new Label("active");
+                switch (is_active) {
+                    case 0 -> {
+                        status.setText("inactive");
+                        status.setStyle("-fx-font-family: poppins; fx-padding: 5px; fx-text-fill:#ff0000; -fx-background-color: #ffe2e2");
+                    }
+                    case 1 -> status.setStyle("-fx-font-family: poppins; fx-padding: 5px; fx-text-fill:#059f40; -fx-background-color:#e3ffee");
+                }//end of cswitch
+
+                data.setAll(new EmployeesData(id, emp_id,fullname, mobileNumber, digitalAddress, email, gender, qualification, joinedDate, idType, idNumber, employmentType, salary, note, username, status, dateUpdated));
+            }
+        }catch (SQLException e) {e.printStackTrace();}
 
         return data;
     }
-
 
 }//end of class...

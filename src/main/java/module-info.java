@@ -8,6 +8,7 @@ module drugnet {
     requires com.jfoenix;
     requires java.desktop;
     requires org.controlsfx.controls;
+    requires annotations;
 
     opens drugnet to javafx.fxml;
     opens drugnet.controllers to javafx.fxml;
@@ -15,7 +16,8 @@ module drugnet {
     opens drugnet.tableViewData;
     opens drugnet.special_methods;
     opens drugnet.dbconfig;
-    opens drugnet.views;
+    opens drugnet.controllers.views;
+    opens drugnet.fetchedData;
 
     exports drugnet.tableViewData;
     exports drugnet.special_methods;
@@ -23,6 +25,8 @@ module drugnet {
     exports drugnet;
     exports drugnet.models;
     exports drugnet.controllers;
+    exports drugnet.controllers.views;
+    exports drugnet.fetchedData;
 
 
 }

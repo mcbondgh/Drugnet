@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="641.0" prefWidth="704.0" style="-fx-background-color: #f2f2f2;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="drugnet.controllers.views.EmployeeManager">
+   <children>
+      <Pane layoutX="17.0" layoutY="28.0" onMouseMoved="#disableButtonOnFieldEmpty" prefHeight="587.0" prefWidth="663.0" style="-fx-border-color: #ddd; -fx-border-radius: 5px; -fx-background-color: #fff;">
+         <children>
+            <TextField fx:id="fullnameField" layoutX="22.0" layoutY="85.0" prefHeight="36.0" prefWidth="407.0" promptText="DrugNet Employee" style="-fx-background-color: #fff; -fx-border-color: #ddd; -fx-border-radius: 5;">
+               <font>
+                  <Font name="Poppins Regular" size="13.0" />
+               </font>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+            </TextField>
+            <Label layoutX="25.0" layoutY="64.0" text="Fullname" textFill="#696969">
+               <font>
+                  <Font name="Poppins Regular" size="13.0" />
+               </font>
+            </Label>
+            <TextField fx:id="mobileNumberField" layoutX="443.0" layoutY="85.0" onKeyReleased="#validateMobileNumberInput" prefHeight="36.0" prefWidth="200.0" promptText="0593733328" style="-fx-background-color: #fff; -fx-border-color: #ddd; -fx-border-radius: 5;">
+               <font>
+                  <Font name="Poppins Regular" size="13.0" />
+               </font>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+            </TextField>
+            <Label layoutX="444.0" layoutY="64.0" text="Mobile Number" textFill="#696969">
+               <font>
+                  <Font name="Poppins Regular" size="13.0" />
+               </font>
+            </Label>
+            <TextField fx:id="digitalAddressField" layoutX="22.0" layoutY="157.0" prefHeight="36.0" prefWidth="200.0" promptText="AA-99483-434" style="-fx-background-color: #fff; -fx-border-color: #ddd; -fx-border-radius: 5;">
+               <font>
+                  <Font name="Poppins Regular" size="13.0" />
+               </font>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+            </TextField>
+            <Label layoutX="23.0" layoutY="137.0" text="Digital Address" textFill="#696969">
+               <font>
+                  <Font name="Poppins Regular" size="13.0" />
+               </font>
+            </Label>
+            <TextField fx:id="emailAddressField" layoutX="227.0" layoutY="158.0" prefHeight="36.0" prefWidth="200.0" promptText="DrugNet Employee" style="-fx-background-color: #fff; -fx-border-color: #ddd; -fx-border-radius: 5;">
+               <font>
+                  <Font name="Poppins Regular" size="13.0" />
+               </font>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+            </TextField>
+            <Label layoutX="230.0" layoutY="137.0" text="Email Address" textFill="#696969">
+               <font>
+                  <Font name="Poppins Regular" size="13.0" />
+               </font>
+            </Label>
+            <Label layoutX="25.0" layoutY="24.0" text="PERSONAL INFORMATION">
+               <font>
+                  <Font name="Poppins Bold" size="14.0" />
+               </font>
+            </Label>
+            <Separator layoutX="22.0" layoutY="56.0" prefHeight="2.0" prefWidth="617.0" style="-fx-background-color: #fff;" />
+            <ComboBox fx:id="genderSelector" layoutX="443.0" layoutY="157.0" prefHeight="36.0" prefWidth="200.0" promptText="Select Gender" style="-fx-border-color: #ddd; -fx-border-radius: 5; -fx-font-family: poppins; -fx-font-size: 13;">
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding></ComboBox>
+            <Label layoutX="444.0" layoutY="137.0" text="Gender" textFill="#696969">
+               <font>
+                  <Font name="Poppins Regular" size="13.0" />
+               </font>
+            </Label>
+            <TextField fx:id="qualificationField" layoutX="22.0" layoutY="233.0" prefHeight="36.0" prefWidth="200.0" promptText="Bsc Medilab" style="-fx-background-color: #fff; -fx-border-color: #ddd; -fx-border-radius: 5;">
+               <font>
+                  <Font name="Poppins Regular" size="13.0" />
+               </font>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+            </TextField>
+            <Label layoutX="23.0" layoutY="213.0" text="Qualification" textFill="#696969">
+               <font>
+                  <Font name="Poppins Regular" size="13.0" />
+               </font>
+            </Label>
+            <ComboBox fx:id="idTypeSelector" layoutX="227.0" layoutY="233.0" prefHeight="36.0" prefWidth="200.0" promptText="National ID" style="-fx-border-color: #ddd; -fx-border-radius: 5; -fx-font-family: poppins; -fx-font-size: 13;">
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding></ComboBox>
+            <Label layoutX="233.0" layoutY="213.0" text="ID Type" textFill="#696969">
+               <font>
+                  <Font name="Poppins Regular" size="13.0" />
+               </font>
+            </Label>
+            <TextField fx:id="idNumberField" layoutX="443.0" layoutY="233.0" prefHeight="36.0" prefWidth="200.0" promptText="Bsc Medilab" style="-fx-background-color: #fff; -fx-border-color: #ddd; -fx-border-radius: 5;">
+               <font>
+                  <Font name="Poppins Regular" size="13.0" />
+               </font>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+            </TextField>
+            <Label layoutX="444.0" layoutY="213.0" text="Id Number" textFill="#696969">
+               <font>
+                  <Font name="Poppins Regular" size="13.0" />
+               </font>
+            </Label>
+            <Label layoutX="23.0" layoutY="295.0" text="SECONDRY INFORMATION">
+               <font>
+                  <Font name="Poppins Bold" size="14.0" />
+               </font>
+            </Label>
+            <Separator layoutX="26.0" layoutY="327.0" prefHeight="2.0" prefWidth="617.0" style="-fx-background-color: #fff;" />
+            <ComboBox fx:id="employeeTypeSelector" layoutX="22.0" layoutY="358.0" prefHeight="36.0" prefWidth="200.0" promptText="Store Keeper" style="-fx-border-color: #ddd; -fx-border-radius: 5; -fx-font-family: poppins; -fx-font-size: 13;">
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+            </ComboBox>
+            <Label layoutX="24.0" layoutY="338.0" text="Employed As " textFill="#696969">
+               <font>
+                  <Font name="Poppins Regular" size="13.0" />
+               </font>
+            </Label>
+            <TextField fx:id="salaryField" layoutX="227.0" layoutY="358.0" onKeyReleased="#validateSalaryInput" prefHeight="36.0" prefWidth="200.0" promptText="1200.00" style="-fx-background-color: #fff; -fx-border-color: #ddd; -fx-border-radius: 5;">
+               <font>
+                  <Font name="Poppins Regular" size="13.0" />
+               </font>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+            </TextField>
+            <DatePicker fx:id="joinedDatePicker" editable="false" layoutX="443.0" layoutY="358.0" prefHeight="36.0" prefWidth="200.0" showWeekNumbers="true" style="-fx-background-color: #eee; -fx-font-family: poppins; -fx-font-size: 16;" />
+            <Label layoutX="227.0" layoutY="338.0" text="Salary Amount" textFill="#696969">
+               <font>
+                  <Font name="Poppins Regular" size="13.0" />
+               </font>
+            </Label>
+            <TextArea fx:id="commentsArea" layoutX="26.0" layoutY="413.0" prefHeight="76.0" prefWidth="617.0" promptText="Additional Information Here" style="-fx-background-color: #fff; -fx-border-color: #ddd; -fx-border-radius: 5;" wrapText="true">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+            </TextArea>
+            <Label layoutX="445.0" layoutY="336.0" text="Date Joined" textFill="#696969">
+               <font>
+                  <Font name="Poppins Regular" size="13.0" />
+               </font>
+            </Label>
+            <CheckBox fx:id="userRoleCheckBox" layoutX="34.0" layoutY="506.0" mnemonicParsing="false" onAction="#userRoleButtonSelected" text="Add To System Users" textFill="#860303">
+               <font>
+                  <Font name="Poppins Regular" size="10.0" />
+               </font></CheckBox>
+            <JFXButton fx:id="saveEmployeeButton" alignment="CENTER" layoutX="501.0" layoutY="523.0" prefHeight="36.0" prefWidth="134.0" style="-fx-background-color: #0c1345c4;" text="➕ Save Employee" textFill="WHITE">
+               <font>
+                  <Font name="Poppins Regular" size="12.0" />
+               </font>
+            </JFXButton>
+            <ComboBox fx:id="userRoleSelector" disable="true" layoutX="29.0" layoutY="525.0" prefHeight="36.0" prefWidth="200.0" promptText="Select User Role" style="-fx-border-color: #ddd; -fx-border-radius: 5; -fx-font-family: poppins; -fx-font-size: 13;">
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+            </ComboBox>
+            <Label fx:id="employeeIdLabel" layoutX="449.0" layoutY="24.0" prefHeight="29.0" prefWidth="175.0" text="emp-000001" textFill="#e67878">
+               <font>
+                  <Font name="Poppins Bold" size="14.0" />
+               </font>
+            </Label>
+         </children></Pane>
+   </children>
+</AnchorPane>

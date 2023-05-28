@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+
+<VBox fx:id="sideBarSlider" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="180.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Button fx:id="dashboardButton" alignment="CENTER" mnemonicParsing="false" onAction="#dashboardButtonClicked" prefHeight="50.0" prefWidth="180.0" style="-fx-border-color: #eee;" text="Dashboard" textAlignment="CENTER" textFill="#7b7b7b">
+         <font>
+            <Font name="Roboto" size="12.0" />
+         </font>
+      </Button>
+      <Button fx:id="reportsButton" alignment="CENTER" mnemonicParsing="false" onAction="#reportsButtonClicked" prefHeight="50.0" prefWidth="180.0" style="-fx-border-color: #eee;" text="Reports" textAlignment="CENTER" textFill="#7b7b7b">
+         <font>
+            <Font name="Roboto" size="12.0" />
+         </font>
+      </Button>
+      <Button fx:id="salesButton" alignment="CENTER" mnemonicParsing="false" onAction="#salesButtonClicked" prefHeight="50.0" prefWidth="180.0" style="-fx-border-color: #eee;" text="Sales" textAlignment="CENTER" textFill="#7b7b7b">
+         <font>
+            <Font name="Roboto" size="12.0" />
+         </font>
+      </Button>
+      <Button fx:id="runTestButton" alignment="CENTER" mnemonicParsing="false" onAction="#testButtonClicked" prefHeight="50.0" prefWidth="180.0" style="-fx-border-color: #eee;" text="Simple Tests" textAlignment="CENTER" textFill="#7b7b7b">
+         <font>
+            <Font name="Roboto" size="12.0" />
+         </font>
+      </Button>
+      <Button fx:id="accountsButton" alignment="CENTER" mnemonicParsing="false" onAction="#accountsButtonClicked" prefHeight="50.0" prefWidth="180.0" style="-fx-border-color: #eee;" text="Accounts" textAlignment="CENTER" textFill="#7b7b7b">
+         <font>
+            <Font name="Roboto" size="12.0" />
+         </font>
+      </Button>
+      <Button fx:id="messageBoxButton" alignment="CENTER" mnemonicParsing="false" onAction="#messageBoxButtonClicked" prefHeight="50.0" prefWidth="180.0" style="-fx-border-color: #eee;" text="Message Box" textAlignment="CENTER" textFill="#7b7b7b">
+         <font>
+            <Font name="Roboto" size="12.0" />
+         </font>
+      </Button>
+      <Button fx:id="addMedicineButton" alignment="CENTER" mnemonicParsing="false" onAction="#addMedicineButtonClicked" prefHeight="50.0" prefWidth="180.0" style="-fx-border-color: #eee;" text="Add Medicine" textAlignment="CENTER" textFill="#7b7b7b">
+         <font>
+            <Font name="Roboto" size="12.0" />
+         </font>
+      </Button>
+      <Button fx:id="stockAdjustmentButton" alignment="CENTER" mnemonicParsing="false" onAction="#stockAdjustmentButtonClicked" prefHeight="50.0" prefWidth="180.0" style="-fx-border-color: #eee;" text="Update Stocks" textAlignment="CENTER" textFill="#7b7b7b">
+         <font>
+            <Font name="Roboto" size="12.0" />
+         </font>
+      </Button>
+      <Button fx:id="humanResourceButton" alignment="CENTER" mnemonicParsing="false" onAction="#humanResourceButtonClicked" prefHeight="50.0" prefWidth="180.0" style="-fx-border-color: #eee;" text="H. Resource" textAlignment="CENTER" textFill="#7b7b7b">
+         <font>
+            <Font name="Roboto" size="12.0" />
+         </font>
+      </Button>
+      <Button fx:id="systemConfigurationButton" alignment="CENTER" mnemonicParsing="false" onAction="#configurattionButtonClicked" prefHeight="50.0" prefWidth="180.0" style="-fx-border-color: #eee;" text="S. Configuration" textAlignment="CENTER" textFill="#7b7b7b">
+         <font>
+            <Font name="Roboto" size="12.0" />
+         </font>
+      </Button>
+   </children>
+</VBox>

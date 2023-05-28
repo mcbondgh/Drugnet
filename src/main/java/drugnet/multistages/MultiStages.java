@@ -9,6 +9,7 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -41,6 +42,19 @@ public class MultiStages {
         stage.setScene(scene);stage.setResizable(false);
         stage.show();
     }
+
+    public static void addEmployee() throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(RunApp.class.getResource("views/addemployee.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        Stage stage = new Stage();
+        Image logo = new Image("G:\\My Drive\\DrugNet\\src\\main\\resources\\drugnet\\cliparts\\DRUGNET.png");
+        stage.getIcons().add(logo);
+        stage.setTitle("Add New Employee");
+        stage.setScene(scene);stage.setResizable(false);
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.show();
+    }
+
 
     public static void configStage() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(RunApp.class.getResource("configurations/system_settings.fxml"));

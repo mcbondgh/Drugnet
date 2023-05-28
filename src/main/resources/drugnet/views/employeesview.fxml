@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import io.github.palexdev.materialfx.controls.legacy.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="564.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="drugnet.controllers.HumanResources">
+   <children>
+      <MFXLegacyTableView fx:id="employeesTable" fixedCellSize="30.0" layoutX="10.0" layoutY="93.0" prefHeight="462.0" prefWidth="1045.0" style="-fx-font-family: poppins; -fx-font-size: 13px; -fx-alignment: center;" tableMenuButtonVisible="true">
+         <columns>
+            <TableColumn fx:id="employeeIdColumn" prefWidth="81.33334589004517" style="-fx-alignment: center;" text="EMP ID" />
+            <TableColumn fx:id="fullnameColumn" prefWidth="213.3333511352539" style="-fx-alignment: center;" text="FULL NAME" />
+            <TableColumn fx:id="employeeMobileNumberColumn" prefWidth="149.99993896484375" style="-fx-alignment: center;" text="MOBILE NUMBER" />
+            <TableColumn fx:id="employeeEmailAddressColumn" prefWidth="215.33331298828125" style="-fx-alignment: center;" text="EMAIL ADDRESS" />
+            <TableColumn fx:id="employmentTypeColumn" prefWidth="134.6666259765625" style="-fx-alignment: center;" text="EMPLOYMENT TYPE" />
+            <TableColumn fx:id="employeeSalaryColumn" minWidth="0.0" prefWidth="91.99993896484375" style="-fx-alignment: center;" text="SALARY(Ghc)" />
+            <TableColumn fx:id="statusColumn" prefWidth="90.66668701171875" style="-fx-alignment: center;" text="STATUS" />
+            <TableColumn fx:id="actionColumn" prefWidth="69.99993896484375" style="-fx-alignment: center;" text="ACTION" />
+         </columns>
+      </MFXLegacyTableView>
+      <JFXButton fx:id="addEmployeeButton" alignment="CENTER" layoutX="937.0" layoutY="32.0" onAction="#addEmployeeButtonOnAction" prefHeight="28.0" prefWidth="118.0" style="-fx-background-color: #0c1345c4;" text="➕ Add Employee" textFill="WHITE">
+         <font>
+            <Font name="Poppins Regular" size="12.0" />
+         </font>
+      </JFXButton>
+      <TextField fx:id="searchEmployee" layoutX="55.0" layoutY="28.0" prefHeight="36.0" prefWidth="400.0" promptText="Search Employee" style="-fx-background-color: #eee; -fx-background-radius: 5px;">
+         <font>
+            <Font name="Poppins Regular" size="15.0" />
+         </font>
+         <padding>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </padding></TextField>
+   </children>
+</AnchorPane>

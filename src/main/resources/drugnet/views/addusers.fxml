@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import io.github.palexdev.materialfx.controls.*?>
+<?import io.github.palexdev.materialfx.controls.legacy.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="564.0" prefWidth="1080.0" style="-fx-background-color: #f9f9f9;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="drugnet.controllers.HumanResources">
+   <children>
+      <Pane layoutX="26.0" layoutY="48.0" onMouseMoved="#checkForAllEmptyFields" prefHeight="488.0" prefWidth="375.0" style="-fx-border-color: #ddd; -fx-border-radius: 5; -fx-background-color: #fff;">
+         <effect>
+            <DropShadow>
+               <color>
+                  <Color opacity="0.053299494087696075" />
+               </color>
+            </DropShadow>
+         </effect>
+         <children>
+            <JFXButton fx:id="addUserButton" alignment="CENTER" layoutX="118.0" layoutY="427.0" onAction="#addUserButtonClicked" prefHeight="28.0" prefWidth="118.0" style="-fx-background-color: #0c1345c4;" text="➕ Add User" textFill="WHITE">
+               <font>
+                  <Font name="Poppins Regular" size="12.0" />
+               </font>
+            </JFXButton>
+            <Pane prefHeight="61.0" prefWidth="375.0" style="-fx-border-color: #eee; -fx-border-radius: 5 5 0 0; -fx-background-color: #eee;">
+               <children>
+                  <Label layoutX="74.0" layoutY="20.0" text="ADD OR UPDATE USER STATUS " textFill="#a3a3a3">
+                     <font>
+                        <Font name="Poppins Black" size="15.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <TextField fx:id="usernameField" layoutX="40.0" layoutY="168.0" prefHeight="38.0" prefWidth="282.0" promptText="Username" style="-fx-border-color: #ddd; -fx-border-radius: 5; -fx-background-color: #fff;">
+               <font>
+                  <Font name="Poppins Regular" size="14.0" />
+               </font>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+            </TextField>
+            <ComboBox fx:id="userRoleSelector" layoutX="40.0" layoutY="228.0" prefHeight="38.0" prefWidth="282.0" promptText="Select User Role" style="-fx-border-color: #ddd; -fx-border-radius: 5; -fx-font-family: poppins; -fx-font-size: 13;">
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+            </ComboBox>
+            <MFXPasswordField fx:id="passwordField" allowCopy="true" floatMode="DISABLED" layoutX="40.0" layoutY="288.0" maxHeight="-Infinity" minWidth="-Infinity" prefHeight="38.0" prefWidth="282.0" promptText="Password" style="-fx-background-color: #fff; -fx-border-color: #ddd; -fx-border-radius: 5px;">
+               <font>
+                  <Font name="Poppins Regular" size="14.0" />
+               </font>
+            </MFXPasswordField>
+            <MFXPasswordField fx:id="confirmPasswordField" allowCopy="true" floatMode="DISABLED" layoutX="40.0" layoutY="345.0" maxHeight="-Infinity" minWidth="-Infinity" prefHeight="38.0" prefWidth="282.0" promptText="Confirm Paassword" style="-fx-background-color: #fff; -fx-border-color: #ddd; -fx-border-radius: 5px;">
+               <font>
+                  <Font name="Poppins Regular" size="14.0" />
+               </font>
+            </MFXPasswordField>
+            <ComboBox fx:id="employeeSelector" layoutX="40.0" layoutY="84.0" prefHeight="38.0" prefWidth="282.0" promptText="Select Employee" style="-fx-border-radius: 5; -fx-font-family: poppins; -fx-font-size: 13; -fx-background-color: #ddd; -fx-background-radius: 5;">
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+            </ComboBox>
+            <Separator layoutX="40.0" layoutY="145.0" prefHeight="4.0" prefWidth="282.0" />
+         </children>
+      </Pane>
+      <MFXLegacyTableView fx:id="usersTable" fixedCellSize="30.0" layoutX="428.0" layoutY="48.0" prefHeight="429.0" prefWidth="629.0" style="-fx-font--family: poppins; -fx-font-size: 14px; -fx-background-color: #fff; -fx-border-color: #eee; -fx-background-radius: 5; -fx-border-radius: 5;">
+         <columns>
+            <TableColumn fx:id="userIdColumn" prefWidth="85.33334350585938" text="EMP ID" />
+            <TableColumn fx:id="usernameColumn" prefWidth="197.99996948242188" text="USERNAME" />
+            <TableColumn fx:id="userRoleColumn" minWidth="0.0" prefWidth="164.0" text="USER ROLE" />
+            <TableColumn fx:id="userStatusColumn" prefWidth="100.66668701171875" text="STATUS" />
+            <TableColumn fx:id="userActionColumn" prefWidth="74.00002034505212" text="ACTION" />
+         </columns>
+         <padding>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </padding></MFXLegacyTableView>
+      <JFXButton fx:id="updateUserStatus" alignment="CENTER" layoutX="920.0" layoutY="496.0" onAction="#updateStatusButtonClicked" prefHeight="28.0" prefWidth="118.0" style="-fx-background-color: #0c1345c4;" text="➕ Update Status" textFill="WHITE">
+         <font>
+            <Font name="Poppins Regular" size="12.0" />
+         </font>
+      </JFXButton>
+   </children>
+</AnchorPane>

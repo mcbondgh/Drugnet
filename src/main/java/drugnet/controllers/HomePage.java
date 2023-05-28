@@ -35,7 +35,7 @@ import java.util.ResourceBundle;
 public class HomePage extends MainModel implements Initializable {
     UserAlerts alerts;
     SpecialMethods SPECIAL_METHODS = new SpecialMethods();
-    static String staticActiveUser;
+    public static String staticActiveUser;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
