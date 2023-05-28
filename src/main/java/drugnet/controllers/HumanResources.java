@@ -23,12 +23,11 @@ public class HumanResources extends HumanResourceModel implements Initializable 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        fillEmployeeSelector();
-//        try {
-//            SPECIAL_METHODS.FlipView("views/employeesview.fxml", borderPane);
-//        } catch (IOException e) {
-//            throw new RuntimeException(e);
-//        }
+        try {
+            SPECIAL_METHODS.FlipView("views/employeesview.fxml", borderPane);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     /*******************************************************************************************************************
@@ -36,13 +35,6 @@ public class HumanResources extends HumanResourceModel implements Initializable 
      ******************************************************************************************************************/
     @FXML private MFXButton employeesViewButton, userViewButton, userRolesViewButton, userLogsViewButton, payRollViewButton;
     @FXML private BorderPane borderPane;
-    @FXML
-    JFXButton addUserButton, updateUserStatus;
-    @FXML private TextField usernameField;
-    @FXML private ComboBox<String> userRoleSelector, employeeSelector;
-    @FXML
-    MFXPasswordField passwordField, confirmPasswordField;
-
 
 
     /*******************************************************************************************************************
@@ -58,33 +50,11 @@ public class HumanResources extends HumanResourceModel implements Initializable 
     @FXML private TableColumn<EmployeesData, Label> statusColumn;
     @FXML private TableColumn<EmployeesData, ComboBox<String>> actionColumn;
 
-    @FXML private MFXLegacyTableView<UsersData> usersTable;
-    @FXML private TableColumn<UsersData, String> userIdColumn;
-    @FXML private TableColumn<UsersData, String> usernameColumn;
-    @FXML private TableColumn<UsersData, String> userRoleColumn;
-    @FXML private TableColumn<UsersData, String> userStatusColumn;
-    @FXML private TableColumn<UsersData, CheckBox> userActionColumn;
-
 
     /*******************************************************************************************************************
      **************************** IMPLEMENTATION OF OTHER METHODS.
      ******************************************************************************************************************/
-    void fillEmployeeSelector() {
-        for(EmployeesData item : getAllEmployees()) {
-            if (item.getStatus().equals("active")) {
-                employeeSelector.getItems().add(item.getFullname());
-            }
-        }
-    }
 
-    /*******************************************************************************************************************
-     **************************** IMPLEMENTATION OF TRUE OR FALSE STATEMENTS.
-     ******************************************************************************************************************/
-    boolean isEmployeeSelectorEmpty() {return employeeSelector.getValue() == null;}
-    boolean isUsernameEmpty() {return usernameField.getText().isEmpty();}
-    boolean isUserRoleSelectorEmpty() {return userRoleSelector.getValue() == null;}
-    boolean isPasswordEmpty() {return passwordField.getText().isEmpty();}
-    boolean isConfirmPasswordEmpty() {return confirmPasswordField.getText().isEmpty();}
 
     /*******************************************************************************************************************
      **************************** ACTION EVENT METHODS IMPLEMENTATION...
@@ -98,18 +68,5 @@ public class HumanResources extends HumanResourceModel implements Initializable 
     @FXML void addEmployeeButtonOnAction() throws IOException {
         MultiStages.addEmployee();
     }
-
-    @FXML void addUserButtonClicked() {
-
-    }
-
-    @FXML void updateStatusButtonClicked() {
-
-    }
-
-    @FXML void checkForAllEmptyFields() {
-        addUserButton.setDisable(isEmployeeSelectorEmpty() || isUsernameEmpty() || isUserRoleSelectorEmpty() || isPasswordEmpty() || isConfirmPasswordEmpty());
-    }
-
 
 }//end of class

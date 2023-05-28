@@ -10,7 +10,7 @@
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="564.0" prefWidth="1080.0" style="-fx-background-color: #f9f9f9;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="drugnet.controllers.HumanResources">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="564.0" prefWidth="1080.0" style="-fx-background-color: #f9f9f9;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="drugnet.controllers.views.UsersManager">
    <children>
       <Pane layoutX="26.0" layoutY="48.0" onMouseMoved="#checkForAllEmptyFields" prefHeight="488.0" prefWidth="375.0" style="-fx-border-color: #ddd; -fx-border-radius: 5; -fx-background-color: #fff;">
          <effect>
