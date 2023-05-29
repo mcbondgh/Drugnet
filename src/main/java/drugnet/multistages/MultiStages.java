@@ -55,6 +55,18 @@ public class MultiStages {
         stage.show();
     }
 
+    public static void updateEmployeeStage() throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(RunApp.class.getResource("views/updateemployee.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        Stage stage = new Stage();
+        Image logo = new Image("G:\\My Drive\\DrugNet\\src\\main\\resources\\drugnet\\cliparts\\DRUGNET.png");
+        stage.getIcons().add(logo);
+        stage.setTitle("Update Employee");
+        stage.setScene(scene);stage.setResizable(false);
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.show();
+    }
+
 
     public static void configStage() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(RunApp.class.getResource("configurations/system_settings.fxml"));

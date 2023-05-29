@@ -1,5 +1,6 @@
 package drugnet.fetchedData;
 
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 
 import java.sql.Timestamp;
@@ -23,8 +24,9 @@ public class EmployeesData {
     String addedBy;
     Label status;
     Timestamp dateCreated;
+    CheckBox checkBox;
 
-    public EmployeesData(int id, String emp_id, String fullname, String mobileNumber, String digitalAddress, String emailAddress, String gender, String qualification, LocalDate joinedDate, String idType, String idNumber, String employeeType, Double salary, String notes, String addedBy, Label status, Timestamp dateCreated) {
+    public EmployeesData(int id, String emp_id, String fullname, String mobileNumber, String digitalAddress, String emailAddress, String gender, String qualification, LocalDate joinedDate, String idType, String idNumber, String employeeType, Double salary, String notes,  Label status, Timestamp dateCreated, CheckBox checkBox) {
         this.id = id;
         this.emp_id = emp_id;
         this.fullname = fullname;
@@ -39,9 +41,9 @@ public class EmployeesData {
         this.employeeType = employeeType;
         this.salary = salary;
         this.notes = notes;
-        this.addedBy = addedBy;
         this.status = status;
         this.dateCreated = dateCreated;
+        this.checkBox = checkBox;
     }
 
     public int getId() {
@@ -58,6 +60,14 @@ public class EmployeesData {
 
     public void setEmp_id(String emp_id) {
         this.emp_id = emp_id;
+    }
+
+    public CheckBox getCheckBox() {
+        return checkBox;
+    }
+
+    public void setCheckBox(CheckBox checkBox) {
+        this.checkBox = checkBox;
     }
 
     public String getFullname() {

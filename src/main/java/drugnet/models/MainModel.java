@@ -3,10 +3,12 @@ package drugnet.models;
 import drugnet.dbconfig.DbAPI;
 import drugnet.fetchedData.EmployeesData;
 import drugnet.fetchedData.SmsApiData;
+import drugnet.fetchedData.UsersData;
 import drugnet.tableViewData.BrandsTableData;
 import drugnet.tableViewData.SuppliersTableData;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 
 import java.sql.SQLException;
@@ -21,11 +23,11 @@ public class MainModel extends DbAPI {
         try {
             String select = "SELECT user_id FROM users WHERE(username = '"+ username +"')";
             prepare = DB_CONNECT().prepareStatement(select);
+            resultSet = prepare.executeQuery();
             if (resultSet.next()) {
                 userId = resultSet.getInt(1);
             }
         }catch (SQLException ignored){}
-
         return userId;
     }
     protected List<Object> getStoreInfo() {
@@ -131,10 +133,9 @@ public class MainModel extends DbAPI {
     protected ObservableList<EmployeesData> getAllEmployees() {
         ObservableList<EmployeesData> data = FXCollections.observableArrayList();
         try {
-            String select = "SELECT `id`, e.`emp_id`, `fullname`, `emp_mobile_number`, `emp_email`, `emp_digital_address`, `emp_gender`, " +
-                    "`emp_qualification`, `emp_idtype`, `emp_idnumber`, `employed_as`, `emp_salary`, " +
-                    "`date_joined`, `emp_notes`, e.`is_active`, username, `date_modified` " +
-                    "FROM employees AS e INNER JOIN users AS u ON e.emp_id = u.emp_id;";
+            String select = "SELECT `id`, e.`emp_id`, `fullname`, `emp_mobile_number`, `emp_email`, `emp_digital_address`, " +
+                    "`emp_gender`, `emp_qualification`, `emp_idtype`, `emp_idnumber`, `employed_as`, `emp_salary`, " +
+                    "`date_joined`, `emp_notes`, e.`is_active`, `date_modified` FROM employees AS e;";
             prepare = DB_CONNECT().prepareStatement(select);
             resultSet = prepare.executeQuery();
             while(resultSet.next()) {
@@ -153,23 +154,66 @@ public class MainModel extends DbAPI {
                 LocalDate joinedDate = resultSet.getDate("date_joined").toLocalDate();
                 String note = resultSet.getString("emp_notes");
                 byte is_active = resultSet.getByte("e.is_active");
-                String username = resultSet.getString("username");
                 Timestamp dateUpdated = resultSet.getTimestamp("date_modified");
 
+                CheckBox checkBox = new CheckBox();
                 Label status = new Label("active");
                 switch (is_active) {
                     case 0 -> {
                         status.setText("inactive");
-                        status.setStyle("-fx-font-family: poppins; fx-padding: 5px; fx-text-fill:#ff0000; -fx-background-color: #ffe2e2");
+                        status.setStyle("-fx-font-family: poppins; -fx-padding: 5px; -fx-width:30px; -fx-background-radius: 5px; -fx-text-fill:#ff0000; -fx-background-color: #ffe2e2");
                     }
-                    case 1 -> status.setStyle("-fx-font-family: poppins; fx-padding: 5px; fx-text-fill:#059f40; -fx-background-color:#e3ffee");
-                }//end of cswitch
+                    case 1 -> {
+                        checkBox.setSelected(true);
+                        status.setStyle("-fx-font-family: poppins; -fx-padding: 5px; -fx-width:30px; -fx-background-radius: 5px; -fx-text-fill:#059f40; -fx-background-color:#e3ffee");
+                    }
+                }//end of switch
 
-                data.setAll(new EmployeesData(id, emp_id,fullname, mobileNumber, digitalAddress, email, gender, qualification, joinedDate, idType, idNumber, employmentType, salary, note, username, status, dateUpdated));
+                data.add(new EmployeesData(id, emp_id,fullname, mobileNumber, digitalAddress, email, gender, qualification, joinedDate, idType, idNumber, employmentType, salary, note, status, dateUpdated, checkBox));
             }
-        }catch (SQLException e) {e.printStackTrace();}
-
+            prepare.close();
+            resultSet.close();
+            DB_CONNECT().close();
+        }catch (SQLException ignored) {}
         return data;
+    }
+
+    public ObservableList<UsersData> getAllUsers() {
+        ObservableList<UsersData> users = FXCollections.observableArrayList();
+        try {
+            String select = "SELECT t1.user_id, t1.emp_id, t1.role_name, t1.username, t1.password, t1.is_active, t1.is_admin, t2.username, t1.date_added from users as t1\n" +
+                    "JOIN users as t2 ON t1.user_id = t2.user_id;";
+            prepare = DB_CONNECT().prepareStatement(select);
+            resultSet = prepare.executeQuery();
+            while(resultSet.next()) {
+                int user_id = resultSet.getInt("t1.user_id");
+                String emp_id = resultSet.getString("t1.emp_id");
+                String role = resultSet.getString("t1.role_name");
+                String username = resultSet.getString("t1.username");
+                String password = resultSet.getString("t1.password");
+                byte isActive = resultSet.getByte("t1.is_active");
+                byte isAdmin = resultSet.getByte("t1.is_admin");
+                String addedBy = resultSet.getString("t2.username");
+                Timestamp dateAdded = resultSet.getTimestamp("t1.date_added");
+                Label activeStatus = new Label("active");
+                CheckBox checkBox = new CheckBox();
+                switch(isActive) {
+                    case 0 -> {
+                        activeStatus.setText("inactive");
+                        activeStatus.setStyle("-fx-font-family: poppins; -fx-padding: 5px; -fx-width:30px; -fx-background-radius: 5px; -fx-text-fill:#ff0000; -fx-background-color: #ffe2e2");
+                    }
+                    case 1 -> {
+                        checkBox.setSelected(true);
+                        activeStatus.setStyle("-fx-font-family: poppins; -fx-padding: 5px; -fx-width:30px; -fx-background-radius: 5px; -fx-text-fill:#059f40; -fx-background-color:#e3ffee");
+                    }
+                }
+                users.add(new UsersData(user_id, emp_id, username, password, role, activeStatus, isAdmin, addedBy, dateAdded, checkBox));
+            }
+            prepare.close();
+            resultSet.close();
+            DB_CONNECT().close();
+        }catch (SQLException e) {e.printStackTrace();}
+        return users;
     }
 
 }//end of class...

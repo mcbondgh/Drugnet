@@ -6,28 +6,26 @@ import drugnet.alerts.UserNotification;
 import drugnet.controllers.HomePage;
 import drugnet.encryption.DefaultPassword;
 import drugnet.encryption.EncryptionDecryption;
-import drugnet.fetchedData.EmployeesData;
 import drugnet.models.HumanResourceModel;
-import drugnet.multistages.MultiStages;
-import io.github.palexdev.materialfx.controls.legacy.MFXLegacyTableView;
-import javafx.beans.property.StringProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import org.jetbrains.annotations.NotNull;
 
-import java.io.IOException;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.ResourceBundle;
 
-public class EmployeeManager extends HumanResourceModel implements Initializable {
+public class UpdateEmployee extends HumanResourceModel implements Initializable {
     UserAlerts ALERTS;
     UserNotification NOTIFICATION = new UserNotification();
+
+
+    static String staticEmployeeID, staticFullname, staticMobileNumber, staticEmailAddress, staticDigitalAddress, staticGender;
+    static String staticQualification, staticIdType, staticIdNumber, staticEmployedAs, staticNote;
+    static LocalDate staticDateJoined;
+    static Double staticSalary;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -35,14 +33,15 @@ public class EmployeeManager extends HumanResourceModel implements Initializable
         fillUserRoleSelector();
         fillEmployeeTypeSelector();
         fillIdTypeSelector();
-        saveEmployeeButtonClicked();
-        employeeIdLabel.setText(generateEmpId());
+        updateEmployeeButtonClicked();
+        setStaticFieldsForEmployeeUpdate();
     }
 
     /*******************************************************************************************************************
      **************************** FXML NODE EJECTIONS.
      ******************************************************************************************************************/
-    @FXML private JFXButton addEmployeeButton, saveEmployeeButton;
+    @FXML
+    private JFXButton updateEmployeeButton;
     @FXML private TextField fullnameField, mobileNumberField, digitalAddressField, emailAddressField;
     @FXML private TextField idNumberField, qualificationField, salaryField;
     @FXML private TextArea commentsArea;
@@ -75,11 +74,26 @@ public class EmployeeManager extends HumanResourceModel implements Initializable
     /*******************************************************************************************************************
      **************************** IMPLEMENTATION OF OTHER METHODS.
      ******************************************************************************************************************/
+    void setStaticFieldsForEmployeeUpdate() {
+        employeeIdLabel.setText(staticEmployeeID);
+        fullnameField.setText(staticFullname);
+        mobileNumberField.setText(staticMobileNumber);
+        emailAddressField.setText(staticEmailAddress);
+        digitalAddressField.setText(staticDigitalAddress);
+        genderSelector.setValue(staticGender);
+        qualificationField.setText(staticQualification);
+        idNumberField.setText(staticIdNumber);
+        idTypeSelector.setValue(staticIdType);
+        employeeTypeSelector.setValue(staticEmployedAs);
+        salaryField.setText(String.valueOf(staticSalary));
+        joinedDatePicker.setValue(staticDateJoined);
+        commentsArea.setText(staticNote);
+    }
     public void fillIdTypeSelector() {
         String[] items = {"National Id", "Passport", "Voter Id", "Driving License", "NHIS", "SSNIT CARD"};
         for (String item : items) {
             idTypeSelector.getItems().add(item);
-          }
+        }
     }
     public void fillGenderSelector() {
         String [] gender = {"Female", "Male", "Other"};
@@ -99,23 +113,8 @@ public class EmployeeManager extends HumanResourceModel implements Initializable
             userRoleSelector.getItems().add(item);
         }
     }
-    @NotNull
-    private String generateEmpId() {
-        String emp_id = "";
-        int count = countEmployees() + 1;
-        if (count <= 9) {
-            emp_id = "emp-00000" + count;
-        } else if (count < 100) {
-            emp_id = "emp-0000" + count;
-        } else if(count < 1000) {
-            emp_id = "emp-000" + count;
-        } else if (count < 10000) {
-            emp_id = "emp-00" + count;
-        } else  emp_id = "emp-0" + count;
-        return emp_id;
-    }
+
     private void resetFields() {
-        employeeIdLabel.setText(generateEmpId());
         fullnameField.clear();
         mobileNumberField.clear();
         digitalAddressField.clear();
@@ -129,7 +128,6 @@ public class EmployeeManager extends HumanResourceModel implements Initializable
         joinedDatePicker.setValue(null);
         commentsArea.clear();
     }
-
 
 
     /*******************************************************************************************************************
@@ -151,7 +149,7 @@ public class EmployeeManager extends HumanResourceModel implements Initializable
         }
     }
     @FXML void disableButtonOnFieldEmpty() {
-        saveEmployeeButton.setDisable(isFullnameEmpty() || isMobileNumberEmpty() || isEmailFieldEmpty() || isDigitalFieldEmpty() || isGenderEmpty() || isQualificationEmpty()
+        updateEmployeeButton.setDisable(isFullnameEmpty() || isMobileNumberEmpty() || isEmailFieldEmpty() || isDigitalFieldEmpty() || isGenderEmpty() || isQualificationEmpty()
                 || isIdNumberEmpty() || isIdTypeEmpty() || isEmployeeTypeEmpty() || isSalaryEmpty() || isDateJoinedEmpty());
     }
 
@@ -160,9 +158,9 @@ public class EmployeeManager extends HumanResourceModel implements Initializable
     /*******************************************************************************************************************
      **************************** ACTION EVENT METHODS IMPLEMENTATION.
      ******************************************************************************************************************/
-    @FXML void saveEmployeeButtonClicked() {
+    @FXML void updateEmployeeButtonClicked() {
         try {
-            saveEmployeeButton.setOnAction(actionEvent -> {
+            updateEmployeeButton.setOnAction(actionEvent -> {
                 String emp_id = employeeIdLabel.getText();
                 String fullname = fullnameField.getText();
                 String mobileNumber = mobileNumberField.getText();
@@ -176,49 +174,18 @@ public class EmployeeManager extends HumanResourceModel implements Initializable
                 Double salary = Double.valueOf(salaryField.getText());
                 LocalDate joinedDate = joinedDatePicker.getValue();
                 String comments = commentsArea.getText();
-                String userRole = userRoleSelector.getValue();
 
                 int activeUserId = getUserIdByUsername(HomePage.staticActiveUser);
-                String defaultPassword = DefaultPassword.defaultPassword;
-                String encryptedPassword = EncryptionDecryption.passwordEncryptor(defaultPassword);
-
-                if (isUserRoleChecked()) {
-                    saveEmployeeButton.setDisable(isUserRoleEmpty());
-                    ALERTS = new UserAlerts("SAVE EMPLOYEE", "DO YOU WISH TO ADD '" + fullname + "' TO YOUR LIST OF EMPLOYEES AND SET AS A NEW USER TOO?", "please confirm your action to add else CANCEL to abort.");
+                ALERTS = new UserAlerts("UPDATE EMPLOYEE", "DO YOU WISH TO UPDATE EMPLOYEE WITH NAME '" + fullname + "' AND ID " + emp_id + "?", "please confirm your action to add else CANCEL to abort.");
                     if (ALERTS.confirmationAlert()) {
-                        int flag = saveEmployee(emp_id, fullname, mobileNumber, email, digitalAddress, gender, qualification, idType, idNumber, employeeType, salary, joinedDate, comments, activeUserId );
-                        flag += saveUser(emp_id, userRole, email, encryptedPassword, activeUserId);
-                        if (flag == 2) {
-                            NOTIFICATION.successNotification("SUCCESSFUL OPERATION", "Employee And User Account Successfully Created.");
-                            resetFields();
-                            userRoleSelector.setValue(null);
-                            userRoleCheckBox.setSelected(false);
-                            userRoleSelector.setDisable(true);
-                        }
-                    }
-                } else {
-                    ALERTS = new UserAlerts("SAVE EMPLOYEE", "DO YOU WISH TO ADD '" + fullname + "' TO YOUR LIST OF EMPLOYEES", "please confirm your action to add else CANCEL to abort.");
-                    if (ALERTS.confirmationAlert()) {
-                        int flag = saveEmployee(emp_id, fullname, mobileNumber, email, digitalAddress, gender, qualification, idType, idNumber, employeeType, salary, joinedDate, comments, activeUserId );
+                        int flag = updateEmployeeData(emp_id, fullname, mobileNumber, email, digitalAddress, gender, qualification, idType, idNumber, employeeType, salary, joinedDate, comments, activeUserId);
                         if (flag > 0) {
-                            NOTIFICATION.successNotification("EMPLOYEE ADDED", "Successfully add new employee to list.");
-                            resetFields();
+                            updateEmployeeButton.getScene().getWindow().hide();
+                            NOTIFICATION.successNotification("UPDATE SUCCESSFUL", "Selected Employee Data Successfully Update. Refresh View To See Changes");
                         }
                     }
-                }
             });
         }catch (Exception ignored) {}
 
     }// end of method.
-
-
-    @FXML void userRoleButtonSelected() {
-        if (isUserRoleChecked()) {
-            userRoleSelector.setDisable(false);
-        } else {
-            userRoleSelector.setDisable(true);
-        }
-    }
-
-
-}//End of class...
+}//end of class...

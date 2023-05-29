@@ -118,7 +118,7 @@ public class HomePage extends MainModel implements Initializable {
         SPECIAL_METHODS.FlipView("controllers/stockAdjustment.fxml", borderPane);
     }
     @FXML void humanResourceButtonClicked() throws IOException {
-        SPECIAL_METHODS.FlipView("controllers/humanResources.fxml", borderPane);
+        SPECIAL_METHODS.FlipView("controllers/humanresources.fxml", borderPane);
     }
     @FXML void configurattionButtonClicked() throws IOException {
         SPECIAL_METHODS.FlipView("configurations/system_settings.fxml", borderPane);

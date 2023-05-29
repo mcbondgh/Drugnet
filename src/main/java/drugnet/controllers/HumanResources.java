@@ -12,13 +12,14 @@ import io.github.palexdev.materialfx.controls.legacy.MFXLegacyTableView;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class HumanResources extends HumanResourceModel implements Initializable {
+public class HumanResources  implements Initializable {
     SpecialMethods SPECIAL_METHODS = new SpecialMethods();
 
     @Override
@@ -37,24 +38,6 @@ public class HumanResources extends HumanResourceModel implements Initializable 
     @FXML private BorderPane borderPane;
 
 
-    /*******************************************************************************************************************
-     **************************** EMPLOYEES TABLE VIEW COLUMNS.
-     ******************************************************************************************************************/
-    @FXML private MFXLegacyTableView<EmployeesData> employeesTable;
-    @FXML private TableColumn<EmployeesData, String> employeeIdColumn;
-    @FXML private TableColumn<EmployeesData, String> fullnameColumn;
-    @FXML private TableColumn<EmployeesData, String> employeeMobileNumberColumn;
-    @FXML private TableColumn<EmployeesData, String> employeeEmailAddressColumn;
-    @FXML private TableColumn<EmployeesData, String> employmentTypeColumn;
-    @FXML private TableColumn<EmployeesData, Double> employeeSalaryColumn;
-    @FXML private TableColumn<EmployeesData, Label> statusColumn;
-    @FXML private TableColumn<EmployeesData, ComboBox<String>> actionColumn;
-
-
-    /*******************************************************************************************************************
-     **************************** IMPLEMENTATION OF OTHER METHODS.
-     ******************************************************************************************************************/
-
 
     /*******************************************************************************************************************
      **************************** ACTION EVENT METHODS IMPLEMENTATION...
@@ -65,8 +48,6 @@ public class HumanResources extends HumanResourceModel implements Initializable 
     @FXML void userViewButtonClicked() throws IOException {
         SPECIAL_METHODS.FlipView("views/addusers.fxml", borderPane);
     }
-    @FXML void addEmployeeButtonOnAction() throws IOException {
-        MultiStages.addEmployee();
-    }
+
 
 }//end of class

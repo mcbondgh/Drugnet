@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="641.0" prefWidth="704.0" style="-fx-background-color: #f2f2f2;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="drugnet.controllers.views.AddEmployee">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="641.0" prefWidth="704.0" style="-fx-background-color: #f2f2f2;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="drugnet.controllers.views.UpdateEmployee">
    <children>
       <Pane layoutX="17.0" layoutY="28.0" onMouseMoved="#disableButtonOnFieldEmpty" prefHeight="587.0" prefWidth="663.0" style="-fx-border-color: #ddd; -fx-border-radius: 5px; -fx-background-color: #fff;">
          <children>
@@ -157,12 +157,12 @@
                   <Font name="Poppins Regular" size="13.0" />
                </font>
             </Label>
-            <CheckBox fx:id="userRoleCheckBox" layoutX="34.0" layoutY="506.0" mnemonicParsing="false" onAction="#userRoleButtonSelected" text="Add To System Users" textFill="#860303">
+            <CheckBox fx:id="userRoleCheckBox" disable="true" layoutX="34.0" layoutY="506.0" mnemonicParsing="false" text="Add To System Users" textFill="#860303">
                <font>
                   <Font name="Poppins Regular" size="10.0" />
                </font>
             </CheckBox>
-            <JFXButton fx:id="saveEmployeeButton" alignment="CENTER" layoutX="501.0" layoutY="523.0" prefHeight="36.0" prefWidth="134.0" style="-fx-background-color: #0c1345c4;" text="➕ Save Employee" textFill="WHITE">
+            <JFXButton fx:id="updateEmployeeButton" alignment="CENTER" layoutX="501.0" layoutY="516.0" onAction="#updateEmployeeButtonClicked" prefHeight="43.0" prefWidth="134.0" style="-fx-background-color: #0c1345c4;" text="🔄 Update" textFill="WHITE">
                <font>
                   <Font name="Poppins Regular" size="12.0" />
                </font>
